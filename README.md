@@ -1,1 +1,2 @@
-# 4Grade Team Repository
+# 6th Team Repository
+### 프로토타입을 소개해 주세요!
