@@ -1,9 +1,14 @@
 import React from 'react';
-import Header from '../components/Header';
+import Banner from '../components/Banner';
+import ContentsList from '../components/ContentsList';
+import Layout from '../components/Layout';
 
 function MainPage(props) {
   return (
-    <Header />
+    <Layout>
+      <Banner />
+      <ContentsList />
+    </Layout>
   );
 }
 
