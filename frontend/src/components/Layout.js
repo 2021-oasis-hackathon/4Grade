@@ -12,7 +12,7 @@ const LayoutBlock = styled.div`
 function Layout(props) {
   return (
     <LayoutBlock>  
-      <div className="layout">
+      <div>
         <Header />
         <main className="main">
           {props.children}
