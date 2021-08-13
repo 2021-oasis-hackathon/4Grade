@@ -6,7 +6,7 @@ import FindPassword from './modal/modal'
 import FindEmail from './modal/modal'
 import axios from 'axios';
 import { authService } from "../Auth/fbase";
-import {ToastsContainer, ToastsStore, ToastsContainerPosition} from 'react-toasts';
+import MainPage from '../pages/MainPage';
 
 
 
@@ -25,7 +25,8 @@ function SignIn(props) {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.createUserWithEmailAndPassword(email, password);
+      await authService.signInWithEmailAndPassword(email, password);
+      //history.push("/")
     } catch (error) {
       setError(error.message);
     }
