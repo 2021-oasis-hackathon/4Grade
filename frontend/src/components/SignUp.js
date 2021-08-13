@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import { useCallback, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { authService } from "../Auth/fbase";
 
 const SignUpBlock = styled.div`
 .container {
@@ -119,17 +120,8 @@ function SignUp() {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        domain,
-        {
-          email: email,
-          password: password,
-          nickname: nickname,
-          name: name,
-        }
-      );
-      console.log(response);
-      history.push("/signin");
+      await authService.createUserWithEmailAndPassword(email,password);
+      history.push("/");
     } catch (e) {
       alert("에러가 발생했습니다");
       history.push("/signup");
@@ -171,31 +163,6 @@ function SignUp() {
     });
   };
 
-
-
-  // const onChangePassword = (e) => {
-  //   const { name, value } = e.target;
-  //   setInputs({
-  //     ...inputs,
-  //     [name]: value
-  //   });
-  //   setCheck({
-  //     ...check,
-  //     [name]: value.length < 8
-  //   });
-  // };
-
-  // const onChangePasswordCheck = (e) => {
-  //   const { name, value } = e.target;
-  //   setCheck({
-  //     ...check,
-  //     [name]: value !== password
-  //   });
-  //   setInputs({
-  //     ...inputs,
-  //     [name]: value
-  //   });
-  // };
 
   const isEmail = (email) => {
     const regExp =

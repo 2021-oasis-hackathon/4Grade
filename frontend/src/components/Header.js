@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { HiOutlineSearch } from "react-icons/hi";
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { authService } from '../Auth/fbase';
 
 const HeaderBlock = styled.div`
   nav {
@@ -87,6 +88,14 @@ const HeaderSearchIcon = styled.div`
 
 
 function Header() {
+
+  const history = useHistory();
+
+  const onLogOutClick = () => {
+    authService.signOut();
+    history.push("/");
+  }
+  
   return (
     <>
       <HeaderBlock>
@@ -109,9 +118,7 @@ function Header() {
               </button>
             </Link>
             <button className="navbar__right-side_logout">
-              <Link to="/signin">
-                <span>로그아웃</span>
-              </Link>
+              <span onClick={onLogOutClick}>로그아웃</span>
             </button>
           </div>
         </nav>
