@@ -93,37 +93,13 @@ label {
 `;
 
 
-const signInInitialState = {
-  loading: null,
-  error: null,
-};
-
-function signInReducer(state = signInInitialState, action) {
-  switch (action.type) {
-    case "SUCCESS":
-      return {
-        ...state,
-        loading: false,
-        error: null,
-      };
-    case "FAILURE":
-      return {
-        ...state,
-        loading: false,
-        error: action.error,
-      };
-    default:
-      return state;
-  }
-}
-
 function SignIn(props) {
   const [emailModalOpen, setEmailModalOpen] = useState(false);
   const [passwordModalOpen, setPasswordModalOpen] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, dispatch] = useReducer(signInReducer, signInInitialState);
+  
   const history = useHistory();
 
   const domain = "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/sign-in"
@@ -138,18 +114,15 @@ function SignIn(props) {
           password: password,
         }
       );
-      dispatch({ type: "SUCCESS", data: response.data });
+      console.log(response);
       history.push("/");
     } catch (e) {
-      dispatch({ type: "FAILURE", error: e });
+      alert("에러가 발생했습니다");
+      history.push("/signin");
     }
   };
 
-  if (state.error) {
-    alert("에러가 발생했습니다");
-    history.push("/signin");
-  }
-  //
+
 
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
