@@ -140,23 +140,23 @@ function SignUp() {
     }
   };
 
-  const onChange = useCallback(e => {
+  const onChange = (e) => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
       [name]: value
     });
-  }, [inputs]);
+  };
 
-  const onChangeEmail = useCallback(e => {
+  const onChangeEmail = (e) => {
     const { name, value } = e.target;
     setCheck({
       ...check,
       [name]: !isEmail(value)
     });
-  }, [check]);
+  };
 
-  const onChangePassword = useCallback(e => {
+  const onChangePassword = (e) => {
     const { name, value } = e.target;
     setCheck({
       ...check,
@@ -166,19 +166,19 @@ function SignUp() {
       ...inputs,
       [name]: value
     });
-  }, [check, inputs]);
+  };
 
-  const onChangePasswordCheck = useCallback(e => {
+  const onChangePasswordCheck = (e) => {
     const { name, value } = e.target;
-      setCheck({
-        ...check,
-        [name]: value !== password
-      });
-      setInputs({
-        ...inputs,
-        [name]: value
-      });
-    }, [check, password, inputs]);
+    setCheck({
+      ...check,
+      [name]: value !== password
+    });
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
+  };
 
   const isEmail = (email) => {
     const regExp =
@@ -193,12 +193,12 @@ function SignUp() {
           <h2 className="title">회원가입</h2>
           <form onSubmit={onSubmit} className="form" action="index.html">
             <div>
-              <label htmlFor="user-email">이메일</label>
+              <label htmlFor="email">이메일</label>
               <div>
                 <input
-                  className="inputSmall"
+                  className="input"
                   placeholder="이메일 주소"
-                  name="user-email"
+                  name="email"
                   value={email}
                   required
                   onChange={onChange}
@@ -214,12 +214,12 @@ function SignUp() {
               </div>
             </div>
             <div>
-              <label htmlFor="user-password">비밀번호</label>
+              <label htmlFor="password">비밀번호</label>
               <input
                 className="input"
                 type="password"
                 placeholder="비밀번호"
-                name="user-password"
+                name="password"
                 value={password}
                 required
                 onChange={onChangePassword}
@@ -233,12 +233,12 @@ function SignUp() {
               )}
             </div>
             <div>
-              <label htmlFor="user-password-check">비밀번호 확인</label>
+              <label htmlFor="passwordConfirm">비밀번호 확인</label>
               <input
                 className={"input"}
                 type="password"
                 placeholder="비밀번호 확인"
-                name="user-password-check"
+                name="passwordConfirm"
                 value={passwordConfirm}
                 required
                 onChange={onChangePasswordCheck}
@@ -252,11 +252,11 @@ function SignUp() {
               )}
             </div>
             <div>
-              <label htmlFor="user-name">이름</label>
+              <label htmlFor="name">이름</label>
               <input
                 className={"input"}
                 placeholder="이름(본명)"
-                name="user-name"
+                name="name"
                 value={name}
                 required
                 onChange={onChange}
@@ -264,17 +264,16 @@ function SignUp() {
               <div className="noError">no error</div>
             </div>
             <div>
-              <label htmlFor="user-nickname">닉네임</label>
+              <label htmlFor="nickname">닉네임</label>
               <div>
                 <input
                   className="inputSmall"
                   placeholder="닉네임(별명)"
-                  name="user-nickname"
+                  name="nickname"
                   value={nickname}
                   required
                   onChange={onChange}
                 />
-                <button className="doubleCheck">중복확인</button>
                 <div className="noError">no error</div>
               </div>
             </div>
