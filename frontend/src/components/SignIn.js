@@ -168,6 +168,7 @@ label {
 
 #signInButton {
   font-size: 15px;
+  font-weight: 500;
   padding: 10px;
   width: 320px;
   cursor: pointer;
@@ -198,6 +199,7 @@ label {
 
 .signUpQuest {
   color: #7e7e7e;
+  font-weight: 500;
 }
 
 .signUp {

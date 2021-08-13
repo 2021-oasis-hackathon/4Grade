@@ -3,21 +3,24 @@ import styled from 'styled-components';
 import { HiOutlineSearch } from "react-icons/hi";
 import { Link, useHistory } from 'react-router-dom';
 import { authService } from '../Auth/fbase';
+import { MdNotificationsNone, MdMailOutline } from "react-icons/md";
 
 const HeaderBlock = styled.div`
   nav {
     margin: 0;
+    padding: 8px 170px;
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+    align-items: center;
+  }
+
+  .top {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    padding: 8px 170px 60px;
-    border-bottom: 1px solid #ced4da;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.04);
   }
 
   .navbar__left-side {
     display: flex;
-    padding: 16px 0 16px 0;
+    padding: 19px 0;
   }
   
   .navbar__logo_img {
@@ -44,39 +47,47 @@ const HeaderBlock = styled.div`
   }
 
   .navbar__right-side {
+    display: flex;
+    justify-content: space-between;
     box-sizing: border-box;
     padding-right: 0;
+    margin: 20px 0;
   }
-  .navbar__right-side_metabus {
-    box-sizing: border-box;
+  /* .navbar__right-side_metabus {
     padding: 10px;
-    margin: 0 10px;
+    margin-right: 20px;
     width: 140px;
 
-    border: none;
     border-radius: 0.3em;
     background-color: #f06595;
     color: white;
     cursor: pointer;
 
+  } */
+  .notice {
+    margin-top: 1px;
+    padding: 10px 10px 7px 11px;
+  }
+  .message {
+    margin-top: 1px;
+    padding: 10px 10px 7px 11px;
   }
   .navbar__right-side_logout {
-    box-sizing: border-box;
-    margin: 0 10px;
     padding: 7px 0 7px 11px;
-
-    border: none;
     background-color: white;
-    border-radius: 0.3em;
-    cursor: pointer;
+    font-size: medium;
   }
 
-  a {
-    text-decoration: none;
+  .bottom {
+    display: flex;
+    margin-top: 10px;
+    justify-content: space-between;
+    margin-right: 500px;
   }
-  a:visited {
-    color: black;
+  .recruit {
+    
   }
+
 `;
 
 const HeaderSearchIcon = styled.div`
@@ -84,6 +95,12 @@ const HeaderSearchIcon = styled.div`
   padding: 10px 18px 10px;
   font-size: 20px;
   cursor: pointer;
+`;
+const HeaderNotification = styled.div`
+  font-size: 20px;
+`;
+const HeaderMessage = styled.div`
+  font-size: 20px;
 `;
 
 
@@ -100,27 +117,49 @@ function Header() {
     <>
       <HeaderBlock>
         <nav>
-          <div className="navbar__left-side">
-            <div className="navbar__logo">
-              <Link to ="/">
-                <img className="navbar__logo_img" src={process.env.PUBLIC_URL + '/logo192.png'} alt="로고" />
+          <div className="top">
+            <div className="navbar__left-side">
+              <div className="navbar__logo">
+                <Link to ="/">
+                  <img className="navbar__logo_img" src={process.env.PUBLIC_URL + '/logo192.png'} alt="로고" />
+                </Link>
+              </div>
+              <div className="navbar__search">
+                <input type="search" placeholder="어떤 활동을 하고 싶나요?" />
+                <HeaderSearchIcon><HiOutlineSearch /></HeaderSearchIcon>
+              </div>
+            </div>
+            <ul className="navbar__right-side">
+              <Link to="/notice" className="notice">
+                  <HeaderNotification><MdNotificationsNone /></HeaderNotification>
               </Link>
-            </div>
-            <div className="navbar__search">
-              <input type="search" placeholder="어떤 활동을 하고 싶나요?" />
-              <HeaderSearchIcon><HiOutlineSearch /></HeaderSearchIcon>
-            </div>
-          </div>
-          <div className="navbar__right-side">
-            <Link to ="/metabus">
-              <button className="navbar__right-side_metabus">
-                <span>학교별 METABUS</span>
+              <Link to="/message" className="message">
+                  <HeaderMessage><MdMailOutline /></HeaderMessage>
+              </Link>
+              <button className="navbar__right-side_logout">
+                <Link to="/signin">
+                  <li>로그아웃</li>
+                </Link>
               </button>
-            </Link>
-            <button className="navbar__right-side_logout">
-              <span onClick={onLogOutClick}>로그아웃</span>
-            </button>
+            </ul>
           </div>
+            <ul className="bottom">
+              <Link to="/recruit">
+                <li className="recruit">모집</li>
+              </Link>
+              <Link to="/board">
+                <li className="board">게시판</li>
+              </Link>
+              <Link to="/gallery">
+                <li className="gallery">작품 갤러리</li>
+              </Link>
+              <Link to="/calender">
+                <li className="calender">일정</li>
+              </Link>
+              <Link to="/tour">
+                <li className="tour">캠퍼스 투어</li>
+              </Link>
+            </ul>
         </nav>
       </HeaderBlock>
     </>

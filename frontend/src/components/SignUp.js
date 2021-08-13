@@ -24,6 +24,7 @@ const SignUpBlock = styled.div`
 
 label {
   font-size: 15px;
+  font-weight: 500;
 }
 
 .form > div {
@@ -52,6 +53,7 @@ label {
 .errorMessage {
   color: red;
   font-size: 13px;
+  font-weight: 500;
 }
 
 .noError {
@@ -85,12 +87,14 @@ label {
 }
 
 #backButton {
+  font-weight: 500;
   background: none;
   margin-right: 8px;
   color: #3c91e6;
 }
 
 #signUpButton {
+  font-weight: 500;
   background: #3c91e6;
   margin-left: 8px;
   color: #fff;
