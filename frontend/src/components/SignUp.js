@@ -104,18 +104,14 @@ function SignUp() {
     password: '',
     passwordConfirm: '',
     nickname: '',
-    email: '',
+    email: ''
   });
-  
-  const [check, setCheck] = useState({
-    emailError: false,
-    passwordError: false,
-    passwordLengthError: false
-  });
+  const [emailError, setEmailError] = useState(false);
+  const [passwordError, setPasswordError] = useState(false);
+  const [passwordLengthError, setPasswordLengthError] = useState(false);
   
   const { name, password, passwordConfirm, nickname, email } = inputs;
-  const { emailError, passwordError, passwordLengthError } = check;
-  
+
   const history = useHistory();
 
   const domain = "http://ec2-13-124-13-158.ap-northeast-2.compute.amazonaws.com:8080/api/sign-up";
@@ -150,18 +146,16 @@ function SignUp() {
 
   const onChangeEmail = (e) => {
     const { name, value } = e.target;
-    setCheck({
-      ...check,
-      [name]: !isEmail(value)
+    setEmailError(!isEmail(value));
+    setInputs({
+      ...inputs,
+      [name]: value
     });
   };
 
   const onChangePassword = (e) => {
     const { name, value } = e.target;
-    setCheck({
-      ...check,
-      [name]: value.length < 8
-    });
+    setPasswordLengthError(value.length < 8);
     setInputs({
       ...inputs,
       [name]: value
@@ -170,15 +164,38 @@ function SignUp() {
 
   const onChangePasswordCheck = (e) => {
     const { name, value } = e.target;
-    setCheck({
-      ...check,
-      [name]: value !== password
-    });
+    setPasswordError(value !== password);
     setInputs({
       ...inputs,
       [name]: value
     });
   };
+
+
+
+  // const onChangePassword = (e) => {
+  //   const { name, value } = e.target;
+  //   setInputs({
+  //     ...inputs,
+  //     [name]: value
+  //   });
+  //   setCheck({
+  //     ...check,
+  //     [name]: value.length < 8
+  //   });
+  // };
+
+  // const onChangePasswordCheck = (e) => {
+  //   const { name, value } = e.target;
+  //   setCheck({
+  //     ...check,
+  //     [name]: value !== password
+  //   });
+  //   setInputs({
+  //     ...inputs,
+  //     [name]: value
+  //   });
+  // };
 
   const isEmail = (email) => {
     const regExp =
@@ -201,8 +218,7 @@ function SignUp() {
                   name="email"
                   value={email}
                   required
-                  onChange={onChange}
-                  onChangeEmail={onChangeEmail}
+                  onChange={onChangeEmail}
                 />
                 {emailError ? (
                   <div className="errorMessage">
