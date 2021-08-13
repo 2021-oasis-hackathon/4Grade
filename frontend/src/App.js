@@ -1,6 +1,7 @@
 import { Route, Router, Switch } from 'react-router-dom';
 import './App.css';
 import { Main, SignIn, SignUp, MetaBus } from './pages';
+import fbase from "./Auth/fbase";
 
 
 function App() {
