@@ -25,7 +25,7 @@ function SignIn(props) {
   const onSubmit = async (e) => {
     e.preventDefault();
     try {
-      await authService.createUserWithEmailAndPassword(email, password);
+      await authService.signInWithEmailAndPassword(email, password);
     } catch (error) {
       setError(error.message);
     }

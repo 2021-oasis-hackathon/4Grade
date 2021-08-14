@@ -11,14 +11,6 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                         <Route exact path="/">
                             <Main userObj={userObj}/>
                         </Route>
-                        <Route path="/signin">
-                            <SignIn userObj={userObj}/>
-                            {/* <Main userObj={userObj}/> */}
-                        </Route>
-                        <Route path="/signUp">
-                            <SignUp userObj = {userObj}/>
-                            </Route>
-                        <Redirect from="*" to="/"/>
                         <Route path="/recruit">
                             <MetaBus userObj = {userObj}/>
                         </Route>
@@ -37,15 +29,11 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                     </>
                 ) : (
                     <>
-                        <Route path="/signin">
+                        <Route exact path="/">
                             <SignIn userObj={userObj}/>
-                            {/* <Main userObj={userObj}/> */}
                         </Route>
                         <Route path="/signUp">
                             <SignUp userObj = {userObj}/>
-                            </Route>
-                        <Route path="/calendar">
-                            <Calendar userObj = {userObj}/>
                             </Route>
                         <Redirect from="*" to="/"/>
                     </>                        
