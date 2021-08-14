@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { HiOutlineSearch } from "react-icons/hi";
 import { Link, useHistory } from 'react-router-dom';
 import { authService } from '../Auth/fbase';
-import { MdNotificationsNone, MdMailOutline } from "react-icons/md";
+import { MdNotificationsNone, MdMailOutline, MdPerson } from "react-icons/md";
+import { HiOutlineSearch } from "react-icons/hi";
 
 const HeaderBlock = styled.div`
   nav {
@@ -72,10 +72,16 @@ const HeaderBlock = styled.div`
     margin-top: 1px;
     padding: 10px 10px 7px 11px;
   }
-  .navbar__right-side_logout {
-    padding: 7px 0 7px 11px;
-    background-color: white;
-    font-size: medium;
+  .profile {
+    margin-top: 1px;
+    padding: 10px 10px 7px 11px;
+    cursor: pointer;
+  }
+  .profile::hover {
+
+  }
+  .sign_out {
+    cursor: pointer;
   }
 
   .bottom {
@@ -97,10 +103,13 @@ const HeaderSearchIcon = styled.div`
   cursor: pointer;
 `;
 const HeaderNotification = styled.div`
-  font-size: 20px;
+  font-size: 22px;
 `;
 const HeaderMessage = styled.div`
-  font-size: 20px;
+  font-size: 22px;
+`;
+const HeaderProfile = styled.div`
+  font-size: 22px;
 `;
 
 
@@ -129,17 +138,22 @@ function Header() {
                 <HeaderSearchIcon><HiOutlineSearch /></HeaderSearchIcon>
               </div>
             </div>
-            <ul className="navbar__right-side">
+            <div className="navbar__right-side">
               <Link to="/notice" className="notice">
                   <HeaderNotification><MdNotificationsNone /></HeaderNotification>
               </Link>
               <Link to="/message" className="message">
                   <HeaderMessage><MdMailOutline /></HeaderMessage>
               </Link>
-              <button className="navbar__right-side_logout">
-                  <li onClick={onLogOutClick}>로그아웃</li>
-              </button>
-            </ul>
+              <HeaderProfile className="profile"><MdPerson /></HeaderProfile>
+              <ul className="profile_box">
+                <li className="user_name">정땡땡</li>
+                <li className="settings">설정</li>
+                <li className="sign_out" onClick={onLogOutClick}>로그아웃</li>
+              </ul>
+                  
+            </div>
+
           </div>
             <ul className="bottom">
               <Link to="/recruit">
