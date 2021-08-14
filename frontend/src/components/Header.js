@@ -153,8 +153,8 @@ function Header() {
               <Link to="/gallery">
                 <li className="gallery">작품 갤러리</li>
               </Link>
-              <Link to="/calender">
-                <li className="calender">일정</li>
+              <Link to="/calendar">
+                <li className="calendar">일정</li>
               </Link>
               <Link to="/tour">
                 <li className="tour">캠퍼스 투어</li>
