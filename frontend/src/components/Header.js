@@ -137,9 +137,7 @@ function Header() {
                   <HeaderMessage><MdMailOutline /></HeaderMessage>
               </Link>
               <button className="navbar__right-side_logout">
-                <Link to="/signin">
-                  <li>로그아웃</li>
-                </Link>
+                  <li onClick={onLogOutClick}>로그아웃</li>
               </button>
             </ul>
           </div>
