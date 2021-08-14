@@ -44,6 +44,9 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                         <Route path="/signUp">
                             <SignUp userObj = {userObj}/>
                             </Route>
+                        <Route path="/calendar">
+                            <Calendar userObj = {userObj}/>
+                            </Route>
                         <Redirect from="*" to="/"/>
                     </>                        
                 )}
