@@ -1,4 +1,4 @@
-import React,{useEffect, useState} from 'react';
+import React,{useRef, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -7,7 +7,6 @@ import { Card, ListGroup, ListGroupItem } from 'react-bootstrap'
 
 
 function Calendar(props) {
-
 
   return (
     <CalendarBlock>
@@ -18,6 +17,7 @@ function Calendar(props) {
               <div className='body-info-container'>
                 <div className='calendar-wrapper'>
                   <FullCalendar
+                    className="calendar"
                     defaultView="dayGridMonth"
                     plugins={[dayGridPlugin]}
                     events={[
@@ -31,26 +31,53 @@ function Calendar(props) {
             </div>
           </div>      
         </div>
-        <div>
-          <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-            <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-              </Card.Text>
-            </Card.Body>
-            <ListGroup className="list-group-flush">
-              <ListGroupItem>Cras justo odio</ListGroupItem>
-              <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-              <ListGroupItem>Vestibulum at eros</ListGroupItem>
-            </ListGroup>
-            <Card.Body>
-              <Card.Link href="#">Card Link</Card.Link>
-              <Card.Link href="#">Another Link</Card.Link>
-            </Card.Body>
-          </Card>
+        <div className="Card-Container">
+          <div className="Card">
+            <Card.Img className="CarImg" variant="top" src="../../images/party.jpg" />
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the bulk of
+                  the card's content.
+                </Card.Text>
+                <Card.Link href="#">Card Link</Card.Link>
+                <Card.Link href="#">Another Link</Card.Link>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="Card">
+            <Card.Img className="CarImg" variant="top" src="../../images/party.jpg" />
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the bulk of
+                  the card's content.
+                </Card.Text>
+                <Card.Link href="#">Card Link</Card.Link>
+                <Card.Link href="#">Another Link</Card.Link>
+              </Card.Body>
+            </Card>
+          </div>
+          <div className="Card">
+            <Card.Img className="CarImg" variant="top" src="../../images/party.jpg" />
+            <Card style={{ width: '18rem' }}>
+              <Card.Body>
+                <Card.Title>Card Title</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                <Card.Text>
+                  Some quick example text to build on the card title and make up the bulk of
+                  the card's content.
+                </Card.Text>
+                <Card.Link href="#">Card Link</Card.Link>
+                <Card.Link href="#">Another Link</Card.Link>
+              </Card.Body>
+            </Card>
+          </div>
+
         </div>
       </div>
       </CalendarBlock>
@@ -59,11 +86,28 @@ function Calendar(props) {
 
 const CalendarBlock = styled.div`
   .Container {
+    display:flex;
+    justify-content:center;
+    width:100%;
+    margin-top:5%;
   }
   .Calendar-Container {
-    height:500px;
+
     width:500px;
-    margin:50px;
+  }
+
+  .Card-Container {
+    margin-left:5%;
+    overflow-y:scroll;
+    height:450px;
+  }
+  .Card {
+    display:flex;
+    margin-bottom:5%;
+  }
+  .CarImg {
+    width:300px;
+    height:200px;
   }
 
 `;
