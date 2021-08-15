@@ -12,13 +12,11 @@ const LayoutBlock = styled.div`
 function Layout(props) {
   return (
     <LayoutBlock>  
-      <div>
         <Header />
         <main className="main">
           {props.children}
         </main>
         <Footer />
-      </div>
     </LayoutBlock>
   );
 }

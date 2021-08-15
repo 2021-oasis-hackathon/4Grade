@@ -38,23 +38,26 @@ const ProfileModalBlock = styled.div`
     right: 150px;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 -3px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dee2e6;
+    /* box-shadow: 0 -3px 20px rgba(0, 0, 0, 0.1); */
     position: absolute;
     background-color: white;
   }
-  .profile_box::after {
-    bottom: 100%; /*말풍선꼭지위치 위아래*/
-    left: 10%; /*말풍선위치 좌우*/
-    border: solid transparent;
-    content: "";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-color: transparent transparent white transparent; /*말풍선 꼭지방향*/
-    border-width: 8px; /*말풍선 꼭지 사이즈*/
-    margin-left: 10px; /*말풍선 상세위치 조정*/
-  }
+
+  /* .profile_box::after { */
+    /* bottom: 100%; 말풍선꼭지위치 위아래 */
+    /* left: 10%; 말풍선위치 좌우 */
+    /* border: 1px solid #dee2e6; */
+    /* content: ""; */
+    /* height: 0; */
+    /* width: 0; */
+    /* position: absolute; */
+    /* pointer-events: none; */
+    /* border-color: transparent transparent white transparent; 말풍선 꼭지방향 */
+    /* border-width: 8px; 말풍선 꼭지 사이즈 */
+    /* margin-left: 10px; 말풍선 상세위치 조정 */
+  /* } */
+  
 
   .sign_out {
     cursor: pointer;

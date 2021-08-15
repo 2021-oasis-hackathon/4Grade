@@ -11,7 +11,7 @@ const HeaderBlock = styled.div`
   nav {
     margin: 0;
     padding: 8px 170px;
-    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
     align-items: center;
   }
 
