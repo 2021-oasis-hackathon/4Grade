@@ -18,21 +18,24 @@ const HeaderBlock = styled.div`
   .top {
     display: flex;
     justify-content: space-between;
+    line-height: 100%;
   }
 
   .navbar__left-side {
     display: flex;
     padding: 19px 0;
+    align-items: center;
   }
   
+  .navbar__logo {
+    margin-right: 20px;
+  }
   .navbar__logo_img {
     width: 40px;
-    padding-top: 3px;
-    margin-right: 20px;
   }
   .navbar__search {
     display: flex;
-    background: rgb(248, 248, 249);
+    background: #f1f3f5;
     border-radius: 2em;
   }
   
@@ -40,14 +43,16 @@ const HeaderBlock = styled.div`
     box-sizing: border-box;
     width: 400px;
     height: 45px;
-    padding: 12px 0 12px 20px;
-    background: rgb(248, 248, 249);
-    background-color: rgba( 255, 255, 255, 0);
+    padding: 20px 0 20px 20px;
+    background: #f1f3f5;
     outline: none;
     border: none;
     border-radius: 2em;
   }
-
+  input::placeholder {
+    font-size: 0.95em;
+  }
+  
   .navbar__right-side {
     display: flex;
     justify-content: space-between;
@@ -84,11 +89,15 @@ const HeaderBlock = styled.div`
   .bottom {
     display: flex;
     margin-top: 10px;
-    justify-content: space-between;
     margin-right: 500px;
+    justify-content: space-between;
+    width: 30rem;
+
+    font-weight: 500;
   }
-  .recruit {
-    
+
+  .navbar__logo_img {
+    width: 7rem;
   }
 
 `;
@@ -129,7 +138,7 @@ function Header() {
             <div className="navbar__left-side">
               <div className="navbar__logo">
                 <Link to ="/">
-                  <img className="navbar__logo_img" src={process.env.PUBLIC_URL + '/logo192.png'} alt="로고" />
+                  <img className="navbar__logo_img" src="../../images/도란도란1.svg" alt="로고" />
                 </Link>
               </div>
               <div className="navbar__search">
@@ -159,8 +168,8 @@ function Header() {
             </Modal>
           </div>        
           <ul className="bottom">
-            <Link to="/recruit">
-              <li className="recruit">모집</li>
+            <Link to="/recruit-competition">
+              <li className="recruit">팀원 모집</li>
             </Link>
             <Link to="/board">
               <li className="board">게시판</li>
@@ -169,7 +178,7 @@ function Header() {
               <li className="gallery">작품 갤러리</li>
             </Link>
             <Link to="/calendar">
-              <li className="calendar">일정</li>
+              <li className="calendar">행사 일정</li>
             </Link>
             <Link to="/tour">
               <li className="tour">캠퍼스 투어</li>
