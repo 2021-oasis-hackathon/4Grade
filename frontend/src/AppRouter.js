@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import { Main, SignIn, SignUp, MetaBus, Calendar, Recruit } from './pages';
+import { Main, SignIn, SignUp, MetaBus, Calendar, Recruit, Gallery } from './pages';
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
@@ -18,7 +18,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             <MetaBus userObj = {userObj}/>
                         </Route>
                         <Route path="/gallery">
-                            <MetaBus userObj = {userObj}/>
+                            <Gallery userObj = {userObj}/>
                         </Route>
                         <Route path="/calendar">
                             <Calendar userObj = {userObj}/>

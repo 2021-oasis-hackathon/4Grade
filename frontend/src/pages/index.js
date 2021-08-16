@@ -4,3 +4,4 @@ export { default as SignUp } from "./SignUpPage";
 export { default as MetaBus } from "./MetaBusPage";
 export { default as Calendar } from "./CalendarPage"
 export { default as Recruit } from "./RecruitPage"
+export { default as Gallery } from "./GalleryPage";
