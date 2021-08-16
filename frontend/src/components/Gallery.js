@@ -3,22 +3,28 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-import { Button } from "react-bootstrap";
+import { Button, NavItem } from "react-bootstrap";
 import { formatIsoTimeString } from '@fullcalendar/react';
+import { useEffect } from 'react';
 
 
 function Gallery(props) {
-    const [idx, setIdx] = useState(0);
-    const [classList, setClassList] = useState("Category")
+    const [picture, setPicture] = useState([]);
+
+    useEffect(() => {
+        
+    })
+
     const [settings, setSettings] = useState(
         {
             nextArrows: true,
             centerMode:true,
             prevArrows: true,
             speed: 500,
-            infinite:true,
-            slidesToShow: 5,
-            slidesToScroll: 5,
+            infinite: false,
+            initialSlide:2,
+            slidesToShow: 4,
+            slidesToScroll: 1,
         }
     )
     const items = [
@@ -33,8 +39,18 @@ function Gallery(props) {
     ]
 
     const onClickEvent = (e) => {
-        setIdx(e.target.id);
+        const but = document.getElementsByClassName("Category");
+        if (e.target.classList[1] === "clicked") {
+            e.target.classList.add("clicked");
+        } else {
+            for (var i = 0; i < 8; i++){
+                but[i].classList.remove("clicked");
+            }
+            e.target.classList.add("clicked");
+        }
+
     }
+
         return (
             <GalleryBlock>
                 <div className="Container">
@@ -44,7 +60,7 @@ function Gallery(props) {
                                 items.map(item => {
                                     return (
                                         <div key={item.id}>
-                                            <Button onClick={onClickEvent} className={item.id == {idx}  ? "Category" : "clicked" }>{item.text}</Button>
+                                            <Button onClick={onClickEvent} className="Category">{item.text}</Button>
                                         </div>
                                     )
                                 })
@@ -64,6 +80,16 @@ const GalleryBlock = styled.div`
         border : 1px solid 	#48D1CC;
         color:black;
     }
+    .Category:hover {
+        box-shadow:200px 0 0 0 rgba(72,209,204,0.5) inset;
+}
+        .clicked {
+        background-color:#48D1CC;
+        color:white;
+        width:130px;
+        height:60px;
+        box-shadow: 0px 0px 0 rgb(0,0,0,0.5);
+    }
     .Slider-Container {
         width:900px;
         margin:10px;
@@ -77,12 +103,7 @@ const GalleryBlock = styled.div`
         color:blue;
     }
 
-    .button{
-    }
 
-      .clicked {
-        color: gold;
-      }
 
 `;
 
