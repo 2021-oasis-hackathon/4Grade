@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
+import GalleryPicture from "./components/GalleryPicture";
 import { Main, SignIn, SignUp, MetaBus, Calendar, Recruit, Gallery } from './pages';
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
