@@ -2,23 +2,25 @@ import React from 'react';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdShare } from "react-icons/io";
 
-function BoardContent(props) {
+function BoardContent({
+  id, state, remain, title, tag1, tag2, info, applicate
+  }) 
+{
   return (
-
       <BoardContentBlock>
         <div className="container">
           <ul className="card">
             <li>
-              <span className="card__recruit-state">모집중</span>
-              <span className="card__recruit-remain">D-10</span>
+              <span className="card__recruit-state">{state}</span>
+              <span className="card__recruit-remain">{remain}</span>
             </li>
-            <li className="card__recruit-title">따배씨 완주 스터디</li>
+            <li className="card__recruit-title">{title}</li>
             {/* <li className="card__recruit-contents">
               다같이 따배씨 완강해보면 어떨까해서 만들어 보았습니다 많은 참여 부탁드립니다 ㅎ..
             </li> */}
             <li className="card__recruit-tag_list">
-              <span className="card__recruit-tag">#홍정모</span>
-              <span className="card__recruit-tag">#C언어</span>
+              <span className="card__recruit-tag">#{tag1}</span>
+              <span className="card__recruit-tag">#{tag2}</span>
             </li>
             <li className="card__recruit-bottom">
               <ul className="card__recruit-bottom_li">
@@ -27,10 +29,10 @@ function BoardContent(props) {
                   <IconBlock2><IoMdShare /></IconBlock2>
                 </li>
                 <li className="card__recruit-bottom_li-info">
-                  진호 · 2시간 전 · 광주
+                  {info}
                 </li>
                 <li className="card__recruit-bottom_li-applicate">
-                  13 / 2
+                  {applicate}
                 </li>
               </ul>
             </li>

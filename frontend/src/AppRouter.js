@@ -1,58 +1,28 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import GalleryPicture from "./components/GalleryPicture";
-import { Main, SignIn, SignUp, MetaBus, Calendar, Recruit, Gallery } from './pages';
+import { Main, SignIn, SignUp, Calendar, Recruit, Board, Gallery, Tour } from './pages';
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
-        <Router>
             <Switch>
                 {isLoggedIn ? (
                     <>
-                        <Route exact path="/">
-                            <Main userObj={userObj}/>
-                        </Route>
-                        <Route path="/recruit-competition">
-                            <Recruit userObj = {userObj}/>
-                        </Route>
-                        <Route path="/recruit-activity">
-                            <Recruit userObj = {userObj}/>
-                        </Route>
-                        <Route path="/recruit-study">
-                            <Recruit userObj = {userObj}/>
-                        </Route>
-                        <Route path="/recruit-club">
-                            <Recruit userObj = {userObj}/>
-                        </Route>
-                        <Route path="/recruit-hobby">
-                            <Recruit userObj = {userObj}/>
-                        </Route>
-                        <Route path="/board">
-                            <MetaBus userObj = {userObj}/>
-                        </Route>
-                        <Route path="/gallery">
-                            <Gallery userObj = {userObj}/>
-                        </Route>
-                        <Route path="/calendar">
-                            <Calendar userObj = {userObj}/>
-                        </Route>
-                        <Route path="/tour">
-                            <MetaBus userObj = {userObj}/>
-                        </Route>
+                        <Route exact path="/" render={(props) => <Main userObj = {userObj} {...props}/>} />
+                        <Route path="/recruit/:category" render={(props) => <Recruit userObj = {userObj} {...props}/>} />
+                        <Route path="/board/:category" render={(props) => <Board userObj = {userObj} {...props}/>} />
+                        <Route path="/gallery" render={(props) => <Gallery userObj = {userObj} {...props}/>} />
+                        <Route path="/calendar" render={(props) => <Calendar userObj = {userObj} {...props}/>} />
+                        <Route path="/tour" render={(props) => <Tour userObj = {userObj} {...props}/>} />
                     </>
                 ) : (
                     <>
-                        <Route exact path="/">
-                            <SignIn userObj={userObj}/>
-                        </Route>
-                        <Route path="/signUp">
-                            <SignUp userObj = {userObj}/>
-                            </Route>
+                        <Route exact path="/" render={(props) => <Main userObj = {userObj} {...props}/>} />
+                        <Route exact path="/signUp" render={(props) => <SignUp userObj = {userObj} {...props}/>} />
                         <Redirect from="*" to="/"/>
                     </>                        
                 )}
             </Switch>
-        </Router>
     )
 }
 

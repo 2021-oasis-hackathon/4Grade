@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
-import Board from './Board';
-import SideNavigation from './SideNavigation';
+import RecruitCompetition from './RecruitCompetition';
+import BoardSideNavigation from './BoardSideNavigation';
 
-function Community(props) {
+function BoardCommunity(props) {
   return (
     <CommunityBlock>
       <div className="community">
-        <SideNavigation />
-        <Board />
+        <BoardSideNavigation />
+        <RecruitCompetition />
       </div>
     </CommunityBlock>
   );
 }
 
-export default Community;
+export default BoardCommunity;
 
 const CommunityBlock = styled.div`
  .community {
