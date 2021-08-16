@@ -1,4 +1,3 @@
-import { Route, Router, Switch } from 'react-router-dom';
 import './App.css';
 import AppRouter from './AppRouter';
 import fbase, { authService } from "./Auth/fbase";

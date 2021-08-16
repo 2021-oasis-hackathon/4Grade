@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
-import { Main, SignIn, SignUp, MetaBus, Calendar } from './pages';
+import { Main, SignIn, SignUp, MetaBus, Calendar, Recruit } from './pages';
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
@@ -12,7 +12,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             <Main userObj={userObj}/>
                         </Route>
                         <Route path="/recruit">
-                            <MetaBus userObj = {userObj}/>
+                            <Recruit userObj = {userObj}/>
                         </Route>
                         <Route path="/board">
                             <MetaBus userObj = {userObj}/>

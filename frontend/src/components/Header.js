@@ -1,15 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
-import { authService } from '../Auth/fbase';
+import { Link,  } from 'react-router-dom';
 import { MdNotificationsNone, MdMailOutline, MdPerson } from "react-icons/md";
 import { HiOutlineSearch } from "react-icons/hi";
+import Modal from './modal/modal';
+import ProfileModal from './modal/profileModal';
+import { useState } from 'react';
 
 const HeaderBlock = styled.div`
   nav {
     margin: 0;
     padding: 8px 170px;
-    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 1px 15px rgba(0, 0, 0, 0.1);
     align-items: center;
   }
 
@@ -72,15 +74,10 @@ const HeaderBlock = styled.div`
     margin-top: 1px;
     padding: 10px 10px 7px 11px;
   }
+
   .profile {
     margin-top: 1px;
     padding: 10px 10px 7px 11px;
-    cursor: pointer;
-  }
-  .profile::hover {
-
-  }
-  .sign_out {
     cursor: pointer;
   }
 
@@ -115,12 +112,14 @@ const HeaderProfile = styled.div`
 
 function Header() {
 
-  const history = useHistory();
+  const [openState, setOpenState] = useState(false);
 
-  const onLogOutClick = () => {
-    authService.signOut();
-    history.push("/");
-  }
+  const openProfileModal = () => {
+    setOpenState(true);
+  };
+  const closeProfileModal = () => {
+    setOpenState(false);
+  };
   
   return (
     <>
@@ -138,40 +137,44 @@ function Header() {
                 <HeaderSearchIcon><HiOutlineSearch /></HeaderSearchIcon>
               </div>
             </div>
-            <div className="navbar__right-side">
-              <Link to="/notice" className="notice">
-                  <HeaderNotification><MdNotificationsNone /></HeaderNotification>
-              </Link>
-              <Link to="/message" className="message">
-                  <HeaderMessage><MdMailOutline /></HeaderMessage>
-              </Link>
-              <HeaderProfile className="profile"><MdPerson /></HeaderProfile>
-              <ul className="profile_box">
-                <li className="user_name">정땡땡</li>
-                <li className="settings">설정</li>
-                <li className="sign_out" onClick={onLogOutClick}>로그아웃</li>
-              </ul>
-                  
-            </div>
-
-          </div>
-            <ul className="bottom">
-              <Link to="/recruit">
-                <li className="recruit">모집</li>
-              </Link>
-              <Link to="/board">
-                <li className="board">게시판</li>
-              </Link>
-              <Link to="/gallery">
-                <li className="gallery">작품 갤러리</li>
-              </Link>
-              <Link to="/calendar">
-                <li className="calendar">일정</li>
-              </Link>
-              <Link to="/tour">
-                <li className="tour">캠퍼스 투어</li>
-              </Link>
+            <ul className="navbar__right-side">
+              <li className="notice">
+                <Link to="/notice">
+                    <HeaderNotification><MdNotificationsNone /></HeaderNotification>
+                </Link>
+              </li>
+              <li className="message" onMouseOver={closeProfileModal}>
+                <Link to="/message">
+                    <HeaderMessage><MdMailOutline /></HeaderMessage>
+                </Link>
+              </li>
+              <li className="profile" onMouseOver={openProfileModal}>
+                <HeaderProfile><MdPerson /></HeaderProfile>
+              </li>
             </ul>
+          </div>
+          <div onMouseOver={openProfileModal} onMouseLeave={closeProfileModal}>
+            <Modal open={openState}>
+              <ProfileModal/>
+            </Modal>
+          </div>        
+          <ul className="bottom">
+            <Link to="/recruit">
+              <li className="recruit">모집</li>
+            </Link>
+            <Link to="/board">
+              <li className="board">게시판</li>
+            </Link>
+            <Link to="/gallery">
+              <li className="gallery">작품 갤러리</li>
+            </Link>
+            <Link to="/calendar">
+              <li className="calendar">일정</li>
+            </Link>
+            <Link to="/tour">
+              <li className="tour">캠퍼스 투어</li>
+            </Link>
+          </ul>
         </nav>
       </HeaderBlock>
     </>
