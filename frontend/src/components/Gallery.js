@@ -6,14 +6,22 @@ import "slick-carousel/slick/slick-theme.css"
 import { Button, NavItem } from "react-bootstrap";
 import { formatIsoTimeString } from '@fullcalendar/react';
 import { useEffect } from 'react';
+import { dbService } from '../Auth/fbase';
+import GalleryPicture from './GalleryPicture';
 
 
 function Gallery(props) {
     const [picture, setPicture] = useState([]);
 
-    useEffect(() => {
-        
-    })
+    // useEffect(() => {
+    //     dbService.collection("picture").onSnapshot((snapshot) => {
+    //         const pictureArray = snapshot.docs.map((doc) => ({
+    //             id: doc.id,
+    //             ...doc.data(),
+    //         }));
+    //         setPicture(pictureArray);
+    //     })
+    // }, []);
 
     const [settings, setSettings] = useState(
         {
@@ -53,19 +61,24 @@ function Gallery(props) {
 
         return (
             <GalleryBlock>
-                <div className="Container">
-                    <div className="Slider-Container">
-                        <Slider {...settings} className="Slider-Container">
-                            {
-                                items.map(item => {
-                                    return (
-                                        <div key={item.id}>
-                                            <Button onClick={onClickEvent} className="Category">{item.text}</Button>
-                                        </div>
-                                    )
-                                })
-                            }
-                        </Slider>
+                <div className="All">
+                    <div className="Container">
+                        <div className="Slider-Container">
+                            <Slider {...settings} className="Slider-Container">
+                                {
+                                    items.map(item => {
+                                        return (
+                                            <div key={item.id}>
+                                                <Button onClick={onClickEvent} className="Category">{item.text}</Button>
+                                            </div>
+                                        )
+                                    })
+                                }
+                            </Slider>
+                        </div>
+                    </div>
+                    <div>
+                        <GalleryPicture/>
                     </div>
                 </div>
             </GalleryBlock>
@@ -73,6 +86,12 @@ function Gallery(props) {
 }
 
 const GalleryBlock = styled.div`
+.All{
+
+}
+.Picture-Container{
+    margin-top:30%;
+}
     .Category{
         width:130px;
         height:60px;
