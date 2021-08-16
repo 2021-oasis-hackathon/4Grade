@@ -138,7 +138,7 @@ function Header() {
             <div className="navbar__left-side">
               <div className="navbar__logo">
                 <Link to ="/">
-                  <img className="navbar__logo_img" src="../../images/도란도란1.svg" alt="로고" />
+                  <img className="navbar__logo_img" src="../images/도란도란2.svg" alt="로고" />
                 </Link>
               </div>
               <div className="navbar__search">
@@ -168,10 +168,10 @@ function Header() {
             </Modal>
           </div>        
           <ul className="bottom">
-            <Link to="/recruit-competition">
+            <Link to="/recruit/competition">
               <li className="recruit">팀원 모집</li>
             </Link>
-            <Link to="/board">
+            <Link to="/board/society">
               <li className="board">게시판</li>
             </Link>
             <Link to="/gallery">

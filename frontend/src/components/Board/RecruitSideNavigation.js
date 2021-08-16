@@ -1,59 +1,41 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 
-function SideNavigation(props) {
+function RecruitSideNavigation() {
 
   const [recruits, setRecruit] = useState([
     { 
       id: 1,
       name: "공모전",
-      domain: "/recruit-competition",
+      domain: "/recruit/competition",
       active: false,
     },
     { 
       id: 2,
       name: "대외활동",
-      domain: "/recruit-activity",
+      domain: "/recruit/activity",
       active: false,
     },
     { 
       id: 3,
       name: "스터디",
-      domain: "/recruit-study",
+      domain: "/recruit/study",
       active: false,
     },
     { 
       id: 4,
       name: "동아리",
-      domain: "/recruit-club",
+      domain: "/recruit/club",
       active: false,
     },
     { 
       id: 5,
       name: "취미",
-      domain: "/recruit-hobby",
+      domain: "/recruit/hobby",
       active: false,
     }
   ]);
-  // const onToggle = onRecruit => {
-  //   setRecruit(
-  //     recruits.map(recruit =>
-  //       recruit.id === onRecruit ? { ...recruit, active: true } : recruit
-  //     )
-  //   );
-  // };
-  const onClickEvent = (e) => {
-    const but = document.getElementsByClassName("navigaion__menu");
-    if (e.target.classList[1] === "navigaion__menu_clicked") {
-        e.target.classList.add("navigaion__menu_clicked");
-    } else {
-        for (var i = 0; i < 5; i++){
-            but[i].classList.remove("navigaion__menu_clicked");
-        }
-        e.target.classList.add("navigaion__menu_clicked");
-    }
-  }
 
 
   return (
@@ -66,15 +48,11 @@ function SideNavigation(props) {
               {
                 recruits.map(recruit => {
                   return (
-                    <Link>
-                      <li
-                        className="navigaion__menu" onClick={onClickEvent}
-                        to={recruit.domain}
-                        /*className={ recruit.active ? "recruit-on_toggle" : "recruit-not_toggle"}*/
-                      >
-                        {recruit.name}
-                      </li>
-                    </Link>
+                    <li className="navigaion__menu">
+                      <NavLink to={recruit.domain} activeClassName="recruit-on_toggle">
+                          {recruit.name}
+                      </NavLink>
+                    </li>
                   );
                 })
               }
@@ -86,7 +64,7 @@ function SideNavigation(props) {
   );
 }
 
-export default SideNavigation;
+export default RecruitSideNavigation;
 
 const SideNavigationBlock = styled.div`
   .navigation__group {
@@ -109,14 +87,9 @@ const SideNavigationBlock = styled.div`
     font-weight: 700;
     color: #2ec4b6;
   }
-  /* .recruit-on_toggle {
+  .recruit-on_toggle {
     font-size: 1.2em;
     font-weight: 700;
     color: #2ec4b6;
-  }
-  .recruit-not_toggle {
-    
-  } */
-
-  
+  }  
 `;
