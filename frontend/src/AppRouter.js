@@ -11,7 +11,19 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                         <Route exact path="/">
                             <Main userObj={userObj}/>
                         </Route>
-                        <Route path="/recruit">
+                        <Route path="/recruit-competition">
+                            <Recruit userObj = {userObj}/>
+                        </Route>
+                        <Route path="/recruit-activity">
+                            <Recruit userObj = {userObj}/>
+                        </Route>
+                        <Route path="/recruit-study">
+                            <Recruit userObj = {userObj}/>
+                        </Route>
+                        <Route path="/recruit-club">
+                            <Recruit userObj = {userObj}/>
+                        </Route>
+                        <Route path="/recruit-hobby">
                             <Recruit userObj = {userObj}/>
                         </Route>
                         <Route path="/board">

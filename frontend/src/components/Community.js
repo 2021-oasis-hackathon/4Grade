@@ -23,5 +23,7 @@ const CommunityBlock = styled.div`
 
    margin: 0;
    padding: 50px 170px;
+
+   width: 93rem;
  }
 `;
