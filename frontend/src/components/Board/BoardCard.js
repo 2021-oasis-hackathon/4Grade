@@ -2,12 +2,19 @@ import React from 'react';
 import styled from 'styled-components';
 import { IoMdHeartEmpty, IoMdShare } from "react-icons/io";
 
-function BoardContent({
-  id, state, remain, title, tag1, tag2, info, applicate
+function BoardCard({
+  id,
+  state,
+  remain,
+  title,
+  tag1,
+  tag2,
+  location,
+  applicate
   }) 
 {
   return (
-      <BoardContentBlock>
+      <BoardCardBlock>
         <div className="container">
           <ul className="card">
             <li>
@@ -29,7 +36,7 @@ function BoardContent({
                   <IconBlock2><IoMdShare /></IconBlock2>
                 </li>
                 <li className="card__recruit-bottom_li-info">
-                  {info}
+                  {location}
                 </li>
                 <li className="card__recruit-bottom_li-applicate">
                   {applicate}
@@ -38,15 +45,15 @@ function BoardContent({
             </li>
           </ul>
         </div>
-      </BoardContentBlock>
+      </BoardCardBlock>
   );
 }
 
-export default BoardContent;
+export default BoardCard;
 
-const BoardContentBlock = styled.div`
+const BoardCardBlock = styled.div`
   .container {
-    padding: 0 0;
+    padding: 0;
   }
   .card {
     box-sizing: border-box;

@@ -1,17 +1,12 @@
 import React from 'react';
-import Community from '../components/Recruit/RecruitCommunity';
-import Layout from '../components/Layout';
-import BoardCommunity from '../components/Board/BoardCommunity';
 
-function RecruitPage(props) {
+function TourPage(props) {
   console.log(props);
   return (
     <div>
-      <Layout>
-          <BoardCommunity />
-      </Layout>
+      캠퍼스 메타버스 투어 페이지입니다.
     </div>
   );
 }
 
-export default RecruitPage;
+export default TourPage;
