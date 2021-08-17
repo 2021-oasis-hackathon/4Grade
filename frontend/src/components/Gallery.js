@@ -1,9 +1,9 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-import { Button } from "react-bootstrap";
+import { Button, Spinner } from "react-bootstrap";
 import GalleryPicture from './GalleryPicture';
 import { AiOutlineSearch } from 'react-icons/ai'
 import { createPortal } from 'react-dom';
@@ -11,18 +11,14 @@ import { createPortal } from 'react-dom';
 
 function Gallery(props) {
     const [num, setNum] = useState(1);
-    const [settings, setSettings] = useState(
-        {
-            nextArrows: true,
-            centerMode:true,
-            prevArrows: true,
-            speed: 500,
-            infinite: false,
-            initialSlide:4,
-            slidesToShow: 5,
-            slidesToScroll: 1,
-        }
-    )
+    const [tag, setTag] = useState(true);
+
+    useEffect(() => {
+        setTag(true);
+        const timerId = setTimeout(() => { setTag(false) }, 1000)
+
+    }, [num]);
+
     const items = [
          { id: '1', text: '사진' },
         { id: '2', text: '일러스트' },
@@ -77,7 +73,12 @@ function Gallery(props) {
                         </div>
                     </div>
                     <div className="Picture-Container">
-                        <GalleryPicture number={num}/>
+                        {tag ?
+                            <Spinner animation="border" role="status" variant="info">
+                                <span className="visually-hidden">Loading...</span>
+                            </Spinner>
+                            :
+                            <GalleryPicture number={num} />}
                     </div>
                 </div>
             </GalleryBlock>
