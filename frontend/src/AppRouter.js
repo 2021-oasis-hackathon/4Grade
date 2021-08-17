@@ -17,7 +17,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                     </>
                 ) : (
                     <>
-                        <Route exact path="/" render={(props) => <Main userObj = {userObj} {...props}/>} />
+                        <Route exact path="/" render={(props) => <SignIn userObj = {userObj} {...props}/>} />
                         <Route exact path="/signUp" render={(props) => <SignUp userObj = {userObj} {...props}/>} />
                         <Redirect from="*" to="/"/>
                     </>                        
