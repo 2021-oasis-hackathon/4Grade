@@ -3,26 +3,14 @@ import styled from 'styled-components';
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css"
-import { Button, NavItem } from "react-bootstrap";
-import { formatIsoTimeString } from '@fullcalendar/react';
-import { useEffect } from 'react';
-import { dbService } from '../Auth/fbase';
+import { Button } from "react-bootstrap";
 import GalleryPicture from './GalleryPicture';
+import { AiOutlineSearch } from 'react-icons/ai'
+import { createPortal } from 'react-dom';
 
 
 function Gallery(props) {
-    const [picture, setPicture] = useState([]);
-
-    // useEffect(() => {
-    //     dbService.collection("picture").onSnapshot((snapshot) => {
-    //         const pictureArray = snapshot.docs.map((doc) => ({
-    //             id: doc.id,
-    //             ...doc.data(),
-    //         }));
-    //         setPicture(pictureArray);
-    //     })
-    // }, []);
-
+    const [num, setNum] = useState(1);
     const [settings, setSettings] = useState(
         {
             nextArrows: true,
@@ -30,20 +18,20 @@ function Gallery(props) {
             prevArrows: true,
             speed: 500,
             infinite: false,
-            initialSlide:2,
-            slidesToShow: 4,
+            initialSlide:4,
+            slidesToShow: 5,
             slidesToScroll: 1,
         }
     )
     const items = [
-         { id: 1, text: '사진' },
-        { id: 2, text: '일러스트' },
-        { id: 3, text: '그래픽' },
-        { id: 4, text: '베스트' },
-        { id: 5, text: '영상' },
-        { id: 6, text: 'UI/UX' },
-        { id: 7, text: '건축' },
-        { id: 8, text: '개발' },
+         { id: '1', text: '사진' },
+        { id: '2', text: '일러스트' },
+        { id: '3', text: '그래픽' },
+        { id: '4', text: '베스트' },
+        { id: '5', text: '영상' },
+        { id: '6', text: 'UI/UX' },
+        { id: '7', text: '건축' },
+        { id: '8', text: '개발' },
     ]
 
     const onClickEvent = (e) => {
@@ -56,7 +44,7 @@ function Gallery(props) {
             }
             e.target.classList.add("clicked");
         }
-
+        setNum(parseInt(e.target.id));
     }
 
         return (
@@ -64,21 +52,32 @@ function Gallery(props) {
                 <div className="All">
                     <div className="Container">
                         <div className="Slider-Container">
-                            <Slider {...settings} className="Slider-Container">
+                            {/* <Slider {...settings} className="Slider-Container"> */}
                                 {
                                     items.map(item => {
                                         return (
                                             <div key={item.id}>
-                                                <Button onClick={onClickEvent} className="Category">{item.text}</Button>
+                                                <Button id={item.id} onClick={onClickEvent} className="Category">{item.text}</Button>
                                             </div>
                                         )
                                     })
                                 }
-                            </Slider>
+                            {/* </Slider> */}
                         </div>
                     </div>
-                    <div>
-                        <GalleryPicture/>
+                    <div >
+                        <div className="Add-Container" >
+                            <Button className="ButtonS">프로젝트 업로드</Button>
+                            <input className="inputS" type="text" leftIcon={<AiOutlineSearch />} placeholder="프로젝트 제목 또는 키워드 검색   🔍" />
+                                <select style={{border:'1px solid gray', fontSize:'2px', width:'100px' , color:'gray'}}>
+                                <option value="1">최신순</option>
+                                <option value="2">좋아요순</option>
+                                <option value="3">조회순</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div className="Picture-Container">
+                        <GalleryPicture number={num}/>
                     </div>
                 </div>
             </GalleryBlock>
@@ -86,15 +85,51 @@ function Gallery(props) {
 }
 
 const GalleryBlock = styled.div`
+display:flex;
+justify-content:center;
+
 .All{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    width:75%;
 
 }
+.Drop{
+    background-color:white;
+    color: #48D1CC 0%;
+}
+.ButtonS {
+    width:100px;
+    height:30px;
+    margin-right:1%;
+    font-size:4px;
+    border-radius:30px;
+    background-color: #48D1CC;
+    border-color:white;
+}
+.inputS {
+    width:180px;
+    height:30px;
+    margin-right:1%;
+    font-size:4px;
+    border-radius:30px;
+    background-color: #f1f2f1;
+    border-color:white;
+    text-align:center;
+
+}
+
 .Picture-Container{
-    margin-top:30%;
+    display:flex;
+    justify-content:center;
+    margin:1%;
+    width:100%;
 }
     .Category{
-        width:130px;
+        width:120px;
         height:60px;
+        margin:4%;
         background-color:white;
         border : 1px solid 	#48D1CC;
         color:black;
@@ -105,23 +140,30 @@ const GalleryBlock = styled.div`
         .clicked {
         background-color:#48D1CC;
         color:white;
-        width:130px;
+        width:120px;
         height:60px;
         box-shadow: 0px 0px 0 rgb(0,0,0,0.5);
     }
     .Slider-Container {
-        width:900px;
+        display:flex;
+        width:100%;
         margin:10px;
+        flex-direction:row;
+        justify-content:space-between;
     }
     .Container{
         display:flex;
-        justify-content:center;
+        justify-content:space-between;
     }
     .slick-next:before,
     .slick-prev:before {
-        color:blue;
+        color:#48D1CC;
     }
-
+.Add-Container{
+    display:flex;
+    justify-content:flex-end;
+    margin-right:4%;
+}
 
 
 `;

@@ -5,8 +5,8 @@ import Gallery from '../components/Gallery';
 
 function GalleryPage(props) {
   return (
-    <Layout>
-      <Gallery />
+    <Layout >
+        <Gallery />
     </Layout>
   );
 }
