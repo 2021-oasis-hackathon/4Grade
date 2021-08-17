@@ -2,15 +2,31 @@ import { flexibleCompare } from '@fullcalendar/core';
 import React,{useRef, useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Card } from 'react-bootstrap';
+import Slider from 'react-slick';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css"
+import { pic } from './GalleryPicture';
+import { BsFillPersonFill } from 'react-icons/bs'
+import {AiFillEye, AiFillHeart} from 'react-icons/ai'
 
 function Popular(props) {
     const more = "더보기>"
-    const one=" 1 "
+     const [settings, setSettings] = useState(
+        {
+            nextArrows: true,
+            prevArrows: true,
+            speed: 500,
+            infinite: false,
+            initialSlide:2,
+            slidesToShow: 4,
+            slidesToScroll: 1,
+        }
+    )
     return (
         <PopularBlock>
             <div style={{ width: '80%'}}>
-                <div style={{display:'flex', margin:'2%'}}>
-                    <h3>인기 게시글</h3>
+                <div style={{display:'flex', marginTop:'4%', marginBottom:'1%'}}>
+                    <h3 style={{letterSpacing:'-1.5px'}}>인기 게시글</h3>
                 </div>
                 <div style={{display:'flex' , justifyContent:'space-between'}}>
                     {PopularData.map(data => {
@@ -18,7 +34,7 @@ function Popular(props) {
                         <Card
                             bg={'light'}
                             text={'dark'}
-                                style={{ width: '360px', borderRadius: '15px', height: '220px'}}
+                                style={{ width: '360px', borderRadius: '15px', height: '240x'}}
                             className="mb-2"
                         >
                                 <Card.Header style={{display:'flex', justifyContent:'space-between',  borderRadius: '15px 15px 0 0',  alignItems:'center'}}>
@@ -35,6 +51,53 @@ function Popular(props) {
                         </Card>                     
                         )
                     })}
+                </div>
+                    <div style={{display:'flex', marginTop:'4%', marginBottom:'1%'}}>
+                        <h3 style={{letterSpacing:'-1.5px'}}>작품 갤러리</h3>
+                    </div>
+                <div >
+                    <Slider {...settings} className="Slider-Container">
+                        {
+                            pic[4].map(picture => {
+                                const url = "../../images/4_" + picture.id + ".png";
+                                return (
+                                    <div key={picture.id}  className="picContainer">
+                                        <div className="pic">
+                                            <img className="pic" src={url}/>
+                                        </div>
+                                        <div style={{maxWidth:"250px"}}>
+                                            <span style={{ fontSize:'15px' }}><IconBlock><BsFillPersonFill/></IconBlock>{picture.name}</span>
+                                            <span style={{ float: 'right', fontSize:'15px' }}><IconBlock><AiFillEye/></IconBlock>{picture.view} <IconBlock><AiFillHeart/></IconBlock>{picture.like}</span>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                    }
+                    </Slider>
+                </div>
+                    <span style={{display:'flex', marginTop:'10%', justifyContent:'space-between', marginBottom:'1%'}}>
+                    <h3 style={{letterSpacing:'-1.5px'}}>행사 소식</h3>
+                    <span style={{color:'gray'}}>{more}</span>
+                </span>
+                <div style={{display:'flex', justifyContent:'space-between'}}>
+                    <div>
+                        <img style={{ width: '400px', height: '200px' }} src="../../images/festival.jpg" />
+                        <h6 style={{fontWeight:'bold'}}>이번 주 호남에서 가장 핫한 축제는 어디?</h6>
+                        <p className="explain">다른 학교 축제 궁금한 사람 여기 모여라!</p>
+                        <p className="explain">2021.09.04 ~ 2021.09.11</p>
+                    </div>
+                                        <div>
+                        <img style={{ width: '300px', height: '200px' }} src="../../images/lecture.jpg" />
+                        <h6 style={{fontWeight:'bold'}}>설민석 교수의 전설의 말하기 특강</h6>
+                        <p className="explain">발표불안을 없애는 효과적인 방법</p>
+                        <p className="explain">2021.08.20</p>
+                    </div>
+                                                            <div>
+                        <img style={{ width: '300px', height: '200px' }} src="../../images/books.jpg" />
+                        <h6 style={{fontWeight:'bold'}}>헌책 줄게 새 책 다오</h6>
+                        <p className="explain">소장 도서 1대 1교환 행사</p>
+                        <p className="explain">2021.08.22 ~ 2021.08.26</p>
+                    </div>
                 </div>
             </div>
         </PopularBlock>
@@ -83,11 +146,21 @@ const PopularData = [
     }
 ]
 
+const IconBlock = styled.span`
+  font-size: 15px;
+  padding-top: -20px;
+  padding-right: 5px;
+  color:gray;
+`;
+
 const PopularBlock = styled.div`
     width:100%;
     display:flex;
     justify-content:center;
 
+    .explain {
+        font-size:7px;
+    }
     .number {
         font-size: .7em;
     width: 1.5em;
@@ -98,6 +171,28 @@ const PopularBlock = styled.div`
     text-align: center;
     color:white;
     background-color:gray
+    }
+
+        .picContainer{
+        width:250px;
+        height:250px;
+        
+    }
+    .pic{
+        width:250px;
+        height:250px;
+        margin:1%;
+    }
+     .Slider-Container {
+        width:102%;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        
+    }
+    .slick-next:before,
+    .slick-prev:before {
+        color:skyblue;
     }
     
 `;

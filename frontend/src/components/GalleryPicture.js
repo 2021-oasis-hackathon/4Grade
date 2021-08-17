@@ -11,7 +11,6 @@ function GalleryPicture({ number }) {
             <div style={{display:'flex', flexWrap:'wrap', justifyContent:'flex-start' }}>
                 {pic[number].map((picture) => {
                     const url = "../../images/" + String(number) + "_" + picture.id + ".png";
-                    console.log(url);
                     return (
                         <div key={picture.id}  className="picContainer">
                             <div className="pic">
@@ -52,7 +51,7 @@ const IconBlock = styled.span`
   color:gray;
 `;
 
-const pic = [
+export const pic = [
     [],
     [{
         "name": "박민영",
