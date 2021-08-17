@@ -6,9 +6,6 @@ import {AiFillEye, AiFillHeart} from 'react-icons/ai'
 
 
 function GalleryPicture({ number }) {
-    useEffect(() => {
-        
-    },[])
     return (
         <PicBlock >
             <div style={{display:'flex', flexWrap:'wrap', justifyContent:'flex-start' }}>
