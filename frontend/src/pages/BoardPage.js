@@ -1,17 +1,29 @@
 import React from 'react';
-import Community from '../components/Recruit/RecruitCommunity';
 import Layout from '../components/Layout';
-import BoardCommunity from '../components/Board/BoardCommunity';
+import styled from 'styled-components';
+import Board from '../components/Board/Board';
 
-function RecruitPage(props) {
+function BoardPage(props) {
   console.log(props);
   return (
     <div>
       <Layout>
-          <BoardCommunity />
+        <BoardBlock>
+          <Board />
+        </BoardBlock>
       </Layout>
     </div>
   );
-}
+};
 
-export default RecruitPage;
+export default BoardPage;
+
+const BoardBlock = styled.div`
+   display: flex;
+   justify-content: center;
+
+   margin: 0;
+   padding: 50px 170px;
+
+   width: 93rem;
+`;

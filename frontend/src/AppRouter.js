@@ -8,17 +8,33 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
             <Switch>
                 {isLoggedIn ? (
                     <>
-                        <Route exact path="/" render={(props) => <Main userObj = {userObj} {...props}/>} />
-                        <Route path="/recruit/:category" render={(props) => <Recruit userObj = {userObj} {...props}/>} />
-                        <Route path="/board/:category" render={(props) => <Board userObj = {userObj} {...props}/>} />
-                        <Route path="/gallery" render={(props) => <Gallery userObj = {userObj} {...props}/>} />
-                        <Route path="/calendar" render={(props) => <Calendar userObj = {userObj} {...props}/>} />
-                        <Route path="/tour" render={(props) => <Tour userObj = {userObj} {...props}/>} />
+                        <Route exact path="/">
+                          <Main userObj = {userObj} />
+                        </Route>
+                        <Route path="/recruit">
+                          <Recruit userObj = {userObj} />
+                        </Route>
+                        <Route path="/board">
+                          <Board userObj = {userObj} />
+                        </Route>
+                        <Route path="/gallery">
+                          <Gallery userObj = {userObj} />
+                        </Route>
+                        <Route path="/calendar">
+                          <Calendar userObj = {userObj} />
+                        </Route>
+                        <Route path="/tour">
+                          <Tour userObj = {userObj} />
+                        </Route>
                     </>
                 ) : (
                     <>
-                        <Route exact path="/" render={(props) => <SignIn userObj = {userObj} {...props}/>} />
-                        <Route exact path="/signUp" render={(props) => <SignUp userObj = {userObj} {...props}/>} />
+                        <Route exact path="/">
+                          <SignIn userObj = {userObj} />
+                        </Route>
+                        <Route path="/signUp">
+                          <SignUp userObj = {userObj} />
+                        </Route>
                         <Redirect from="*" to="/"/>
                     </>                        
                 )}

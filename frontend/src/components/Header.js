@@ -168,10 +168,10 @@ function Header() {
             </Modal>
           </div>        
           <ul className="bottom">
-            <Link to="/recruit/competition">
+            <Link to="/recruit">
               <li className="recruit">팀원 모집</li>
             </Link>
-            <Link to="/board/society">
+            <Link to="/board">
               <li className="board">게시판</li>
             </Link>
             <Link to="/gallery">
