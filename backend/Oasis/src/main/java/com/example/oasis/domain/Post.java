@@ -8,7 +8,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity(name="oasis")
-public class post {
+public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,7 +39,7 @@ public class post {
     private String likes;
 
     @Builder
-    public post(String title, String contents, String college, String name, String comment, String posting_date, String views, String likes)
+    public Post(String title, String contents, String college, String name, String comment, String posting_date, String views, String likes)
     {
         this.title = title;
         this.contents = contents;
