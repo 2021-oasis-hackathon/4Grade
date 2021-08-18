@@ -25,3 +25,4 @@
 * Frontend Application: JavaScript, React.js
 * Backend Server: Spring-boot(CRUD), Firebase(Authentication)
 * Database: MySQL(CRUD)
+
