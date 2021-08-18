@@ -1,28 +1,29 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
+import Menu from '../Menu';
 import RecruitCardList from './RecruitCardList';
 
 function Recruit() {
 
   const [menus, setRecruit] = useState([
     { 
-      id: "1",
+      id: 1,
       name: "공모전",
-      active: false,
+      active: true,
     },
     { 
-      id: "2",
+      id: 2,
       name: "대외활동",
       active: false,
     },
     { 
-      id: "3",
+      id: 3,
       name: "스터디",
       active: false,
     },
     { 
-      id: "4",
+      id: 4,
       name: "동아리·취미",
       active: false,
     },
@@ -30,16 +31,21 @@ function Recruit() {
 
   const [id, setId] = useState(1);
 
+  useEffect(() => {
+    const firstMenu = document.getElementsByClassName("navigaion__menu");
+    firstMenu[0].classList.add("navigaion__menu_clicked");
+  }, []);
+
   
   const onClickMenu = (e) => {
-    const but = document.getElementsByClassName("navigaion__menu");
-        if (e.target.classList[1] === ".navigaion__menu_clicked") {
-            e.target.classList.add(".navigaion__menu_clicked");
+    const menu = document.getElementsByClassName("navigaion__menu");
+        if (e.target.classList[1] === "navigaion__menu_clicked") {
+            e.target.classList.add("navigaion__menu_clicked");
         } else {
             for (var i = 0; i < 4; i++){
-                but[i].classList.remove(".navigaion__menu_clicked");
+                menu[i].classList.remove("navigaion__menu_clicked");
             }
-            e.target.classList.add(".navigaion__menu_clicked");
+            e.target.classList.add("navigaion__menu_clicked");
         }
     setId(e.target.id);
   }
