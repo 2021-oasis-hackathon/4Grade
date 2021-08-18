@@ -113,7 +113,7 @@ function SignIn(props) {
             <span className="signUp">회원가입</span>
           </Link>
         </div>
-            <div className="errorMessage">{error ? "이메일 혹은 비밀번호를 확인해주세요." : ""}</div>
+            <span className="errorMessage">{error ? "이메일 혹은 비밀번호를 확인해주세요." : ""}</span>
       </div>
     </SignInBlock>
       </SignInBackground>
@@ -126,7 +126,7 @@ const SignInBackground = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: url(../../images/loginImage_mac.png);;
+  background: url(../../images/loginImage_mac2.png);
   /* background: linear-gradient(
     to right,
     rgba(20, 20, 20, 0.1) 10%,
@@ -142,23 +142,29 @@ const SignInBlock = styled.div`
 .container {
   display: grid;
   place-items: center;
-  grid-template-rows: 50px 200px 0 100px;
-  grid-template-columns: 14em;
+  grid-template-rows: 50px 220px 0 30px;
+  grid-template-columns: 16.2em;
+
   background-color: #fff;
+  /* background-color: rgba(255, 255, 255, 0.9); */
   box-sizing: border-box;
 
   margin: 12em 35em 12em 60em;
-  padding: 2em 3em;
+  padding: 2em 1.9em 0.3em;
   border-radius: 1em;
   width: 20em;
   height: 25em;
 }
 .title {
+  padding-right: 7.3em;
+  font-size: 1.6em;
+  font-weight: 700;
   color: #2F3437;
 }
 
 .form {
   display: grid;
+  margin-top: 2em;
 }
 
 label {
@@ -172,35 +178,36 @@ label {
 }
 
 .input {
-  font-size: 15px;
+  font-size: 14px;
   border-bottom: 0.7px solid #a6a3a3;
-  padding: 10px 20px;
-  width: 17em;
+  padding: 10px 3px;
+  width: 18em;
   color: #000;
-}
-
-.errorMessage {
-  color: red;
-  font-size: 13px;
+  background-color: #fff;
+  /* background-color: rgba(255, 255, 255, 0); */
 }
 
 .noError {
   opacity: 0;
-  font-size: 13px;
+  font-size: 11px;
 }
 
 #buttons {
   display: inline-block;
   text-align: center;
+  margin-top: 0.3em;
 }
 
 #signInButton {
   font-size: 15px;
   font-weight: 500;
+
   padding: 10px;
-  width: 320px;
+  width: 17em;
   cursor: pointer;
-  background: #3c91e6;
+
+  /* background: #34D0D4; */
+  background: #404040;
   color: #fff;
   box-shadow: 0 3px 7px 0 #dbdbdb;
   border: none;
@@ -208,7 +215,7 @@ label {
 }
 
 .findInfoMenu {
-  margin-left: 140px;
+  margin-left: 6em;
 }
 
 .findInfo {
@@ -216,6 +223,7 @@ label {
   color: #7e7e7e;
   border: none;
   background-color: inherit;
+  font-size: 0.7em;
 }
 
 .findInfo:link,
@@ -226,14 +234,26 @@ label {
 }
 
 .signUpQuest {
+  margin-top: 5.5em;
+
   color: #7e7e7e;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 0.75em;
+  letter-spacing: 0.001em;
 }
 
 .signUp {
   text-decoration: underline;
   font-weight: 700;
-  color: #3c91e6;
+  /* color: #34D0D4; */
+  color: #404040;
+  letter-spacing: 0.001em;
+}
+
+.errorMessage {
+  margin-top: 17em;
+  color: red;
+  font-size: 0.1em;
 }
 `;
 
