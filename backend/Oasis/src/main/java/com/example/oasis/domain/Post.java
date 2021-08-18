@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity(name="oasis")
+@Entity(name="post")
 public class Post {
 
     @Id
