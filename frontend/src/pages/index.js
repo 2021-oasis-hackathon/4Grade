@@ -6,3 +6,5 @@ export { default as Board } from "./BoardPage";
 export { default as Calendar } from "./CalendarPage"
 export { default as Gallery } from "./GalleryPage";
 export { default as Tour } from "./TourPage";
+export { default as WriteP } from "./WritePage";
+export {default as Campus} from "./CampusPage"

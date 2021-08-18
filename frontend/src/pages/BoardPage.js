@@ -19,11 +19,10 @@ function BoardPage(props) {
 export default BoardPage;
 
 const BoardBlock = styled.div`
-   display: flex;
-   justify-content: center;
 
    margin: 0;
    padding: 50px 170px;
 
-   width: 93rem;
+  //  width: 93rem;
+  width:90%;
 `;

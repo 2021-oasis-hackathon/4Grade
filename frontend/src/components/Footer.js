@@ -4,7 +4,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 
 const FooterBlock = styled.div`
   .footer {
-    height: 100px;
+    height: 80px;
     margin-top: auto;
     background-color: #dde0ea;
   }
@@ -15,7 +15,7 @@ const FooterBlock = styled.div`
     height: 100%;
     display: flex;
     align-items: center;
-    justify-content: left;
+    justify-content: center;
     margin: 0 auto;
   }
 
@@ -30,10 +30,12 @@ function Footer() {
   return (
       <FooterBlock>
         <footer className="footer">
-          <div className="contents">
-            <span className="info">
-              서비스에 대한 설명 및 기타 문의사항 링크 넣을 곳
-            </span>
+        <div className="contents">
+          <img style={{marginRight:'3%', width:'70px'}}src="../../images/Icon3.svg" alt="로고" />
+            <span style={{marginRight:'3%', fontSize:'13px'}}>
+              문의 dorandoran@naver.com
+          </span>
+          <span style={{ fontSize:'13px'}}>Copyright ©️ 도란도란 All rights reserved</span>
           </div>
         </footer>
       </FooterBlock>

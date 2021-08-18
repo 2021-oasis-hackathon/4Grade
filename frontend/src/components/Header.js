@@ -138,7 +138,7 @@ function Header() {
             <div className="navbar__left-side">
               <div className="navbar__logo">
                 <Link to ="/">
-                  <img className="navbar__logo_img" src="../images/도란도란2.svg" alt="로고" />
+                  <img className="navbar__logo_img" src="../images/Icon2.svg" alt="로고" />
                 </Link>
               </div>
               <div className="navbar__search">
@@ -180,7 +180,7 @@ function Header() {
             <Link to="/calendar">
               <li className="calendar">행사 일정</li>
             </Link>
-            <Link to="/tour">
+            <Link to="/campus">
               <li className="tour">캠퍼스 투어</li>
             </Link>
           </ul>

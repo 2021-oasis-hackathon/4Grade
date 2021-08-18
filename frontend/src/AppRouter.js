@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { HashRouter as Router, Redirect, Route, Switch } from "react-router-dom";
 import GalleryPicture from "./components/GalleryPicture";
-import { Main, SignIn, SignUp, Calendar, Recruit, Board, Gallery, Tour } from './pages';
+import { Main, SignIn, SignUp, Calendar, Recruit, Board, Gallery, Tour, WriteP, Campus } from './pages';
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
@@ -25,6 +25,12 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                         </Route>
                         <Route path="/tour">
                           <Tour userObj = {userObj} />
+                        </Route>
+                        <Route path="/write">
+                          <WriteP userObj = {userObj} />
+            </Route>
+                                    <Route path="/campus">
+                          <Campus userObj = {userObj} />
                         </Route>
                     </>
                 ) : (
