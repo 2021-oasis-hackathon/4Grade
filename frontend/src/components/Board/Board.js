@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { flexibleCompare } from '@fullcalendar/core';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import BoardCardList from './BoardCardList';
+import "../Recruit/RecruitCard"
+import BoardList from './BoardList';
 
 function Board() {
 
@@ -77,23 +79,58 @@ function Board() {
       active: false,
     },
   ]);
-
+  
   const [id, setId] = useState(1);
+  const [list, setList] = useState([]);
 
-  const onClickMenu = (e) => {
-    const but = document.getElementsByClassName("navigaion__menu");
-        if (e.target.classList[1] === ".navigaion__menu_clicked") {
-            e.target.classList.add(".navigaion__menu_clicked");
+    useEffect(() => {
+    const firstMenu = document.getElementsByClassName("navigaion__menu");
+    firstMenu[0].classList.add("navigaion__menu_clicked");
+  }, []);
+  
+    useEffect(() => {
+                  fetch('/api/post')
+                  .then(response => response.json())
+                  .then(data => setList(data)); 
+    },[])
+
+  const categoryChange = (e) => {
+        const but = document.getElementsByClassName("navigaion__menu");
+        if (e.target.classList[1] === "navigaion__menu_clicked") {
+            e.target.classList.add("navigaion__menu_clicked");
         } else {
-            for (var i = 0; i < 4; i++){
-                but[i].classList.remove(".navigaion__menu_clicked");
+            for (var i = 0; i < 14; i++){
+                but[i].classList.remove("navigaion__menu_clicked");
             }
-            e.target.classList.add(".navigaion__menu_clicked");
+            e.target.classList.add("navigaion__menu_clicked");
         }
-    setId(e.target.id);
+  }
+
+  const onClickMenu = async(e) => {
+    // const but = document.getElementsByClassName("navigaion__menu");
+    //     if (e.target.classList[1] === "navigaion__menu_clicked") {
+    //         e.target.classList.add("navigaion__menu_clicked");
+    //     } else {
+    //         for (var i = 0; i < 14; i++){
+    //             but[i].classList.remove("navigaion__menu_clicked");
+    //         }
+    //         e.target.classList.add("navigaion__menu_clicked");
+    //     }
+    await categoryChange(e);
+    const number = e.target.id;
+    if (number == 1) {
+            console.log("1")
+            fetch('/api/post')
+                .then(response => response.json())
+                .then(data => setList(data));   
+        } else if (number == 2) {
+            fetch('/api/post2')
+            .then(response => response.json())
+            .then(data => setList(data));
+        }
   }
   return (
-    <>
+    <div style={{display:'flex', justifyContent:'flex-start'}}>
       <SideNavigationBlock>
         <div className="container">
           <ul className="navigation">
@@ -103,7 +140,7 @@ function Board() {
                 {
                   menus.map(menu => {
                     return (
-                      <li className="navigaion__menu" id={menu.id} onClick={onClickMenu}>
+                      <li key={menu.id} className="navigaion__menu" id={menu.id} onClick={onClickMenu}>
                             {menu.name}
                       </li>
                     );
@@ -114,14 +151,15 @@ function Board() {
           </ul>
         </div>
       </SideNavigationBlock>
-      <BoardCardList number={id} />
-    </>
+      <BoardList List={list}/>
+    </div>
   );
 }
 
 export default Board;
 
 const SideNavigationBlock = styled.div`
+margin-right:5%;
   .container {
     padding: 0 2em;
   }
