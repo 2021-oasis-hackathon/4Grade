@@ -56,8 +56,9 @@ function SignIn(props) {
   };
   
   return (
-    <SignInBlock>
-      <div className="container">
+    <SignInBackground>
+        <SignInBlock>
+    <div className="container">
         <h2 className="title">로그인</h2>
         <form onSubmit={onSubmit} className="form" action="index.html">
           <div>
@@ -115,16 +116,45 @@ function SignIn(props) {
             <div className="errorMessage">{error ? "이메일 혹은 비밀번호를 확인해주세요." : ""}</div>
       </div>
     </SignInBlock>
+      </SignInBackground>
   );
 }
+
+const SignInBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(../../images/loginImage_mac.png);;
+  /* background: linear-gradient(
+    to right,
+    rgba(20, 20, 20, 0.1) 10%,
+    rgba(20, 20, 20, 0.7) 70%,
+    rgba(20, 20, 20, 1)
+  ),
+  url(../../images/loginImage_mac.png); */
+  background-size: cover;
+`;
 
 const SignInBlock = styled.div`
 
 .container {
   display: grid;
   place-items: center;
-  margin-top: 80px;
-  grid-template-rows: 50px 200px 0px 100px;
+  grid-template-rows: 50px 200px 0 100px;
+  grid-template-columns: 14em;
+  background-color: #fff;
+  box-sizing: border-box;
+
+  margin: 12em 35em 12em 60em;
+  padding: 2em 3em;
+  border-radius: 1em;
+  width: 20em;
+  height: 25em;
+}
+.title {
+  color: #2F3437;
 }
 
 .form {
@@ -137,15 +167,15 @@ label {
 
 .form > div {
   display: grid;
+  place-items: center;
   grid-gap: 5px;
 }
 
 .input {
   font-size: 15px;
-  border: 0.7px solid #a6a3a3;
-  border-radius: 5px;
-  padding: 10px;
-  width: 300px;
+  border-bottom: 0.7px solid #a6a3a3;
+  padding: 10px 20px;
+  width: 17em;
   color: #000;
 }
 
