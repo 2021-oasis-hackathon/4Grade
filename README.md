@@ -16,7 +16,7 @@
 * 김유라 UX/UI Designer <br>
 
 ## &#128187; 프로젝트 소개
-호남지역 대학생들의 연합 네트워킹 커뮤니티 플랫폼 **'도란도란'** 입니다.
+호남지역 대학생들의 연합 네트워킹 커뮤니티 플랫폼 **도란도란** 입니다.
 
 ## 시연영상 
 [![Video Label](http://img.youtube.com/vi/YmTTlmMXec/0.jpg)](https://www.youtube.com/watch?v=-YmTTlmMXec&t=1s)
