@@ -17,7 +17,7 @@ function Banner(props) {
           <img
               className="d-block w-100 imageh"
             // src="holder.js/800x400?text=First slide&bg=373940"
-            src = "../../images/mainBanner.png"
+            src = "../../images/banner1.png"
               alt="First slide"
           />
         </Carousel.Item>
@@ -25,7 +25,7 @@ function Banner(props) {
           <img
             className="d-block w-100 imageh"
             // src="holder.js/800x400?text=Second slide&bg=282c34"
-            src = "../../images/mainBanner.png"
+            src = "../../images/banner2.png"
             alt="Second slide"
           />
         </Carousel.Item>
@@ -33,7 +33,7 @@ function Banner(props) {
           <img
             className="d-block w-100 imageh"
             // src="holder.js/800x400?text=Third slide&bg=20232a"
-            src = "../../images/mainBanner.png"      
+            src = "../../images/banner3.png"      
             alt="Third slide"
             
           />
@@ -64,6 +64,8 @@ justify-content:center;
   height:300px;
 }
 
+.carousel-control-next {}
+    height:10%;
 `;
 
 export default Banner;

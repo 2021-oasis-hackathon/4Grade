@@ -12,6 +12,11 @@ function Gallery(props) {
     const [tag, setTag] = useState(true);
 
     useEffect(() => {
+    const firstMenu = document.getElementsByClassName("Category");
+    firstMenu[0].classList.add("clicked");
+    }, []);
+    
+    useEffect(() => {
         setTag(true);
         const timerId = setTimeout(() => { setTag(false) }, 1000)
 

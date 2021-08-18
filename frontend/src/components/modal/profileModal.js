@@ -9,7 +9,6 @@ function ProfileModal(props) {
 
   const onLogOutClick = () => {
     authService.signOut();
-    history.push("/");
   }
 
   return (
