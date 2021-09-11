@@ -11,8 +11,8 @@
 
 ## 팀원
 * 박민기 PM <br>
-* [정현진](https://github.com/nOeulll) Front-End Engineer <br>
-* [한상현](https://github.com/luck2901) Full Stack Engineer <br>
+* [정현진](https://github.com/nOeulll) Front-End Developer <br>
+* [한상현](https://github.com/luck2901) Full Stack Developer <br>
 * 김유라 UX/UI Designer <br>
 
 ## &#128187; 프로젝트 소개
